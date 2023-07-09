@@ -2,7 +2,7 @@
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/alexanderatallah/openrouter-streamlit?quickstart=1)
 
-Starter examples for building LLM apps with Streamlit and OpenRouter.
+Starter examples for building LLM apps with Streamlit and OpenRouter, using [OpenRouter OAuth PCKE](https://openrouter.ai/docs#oauth).
 
 ## Overview of the App
 
