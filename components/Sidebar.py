@@ -56,7 +56,7 @@ def sidebar(default_model):
         selected_model = params.get("model", [None])[0] or st.session_state.get(
             "model", None
         )
-        url = utils.get_url()
+        url = utils.url_to_hostname(utils.get_url())
         if not api_key:
             st.button(
                 "Connect OpenRouter",
