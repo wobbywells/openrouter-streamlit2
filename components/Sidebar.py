@@ -79,8 +79,8 @@ def sidebar(default_model):
         st.markdown(
             "[View the source code](https://github.com/alexanderatallah/openrouter-streamlit)"
         )
-        st.markdown(
-            "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/alexanderatallah/openrouter-streamlit?quickstart=1)"
-        )
+        # st.markdown(
+        #     "[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/alexanderatallah/openrouter-streamlit?quickstart=1)"
+        # )
 
     return api_key, selected_model
