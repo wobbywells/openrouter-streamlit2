@@ -26,7 +26,7 @@ Current examples include:
 python -m venv .venv
 source .venv/bin/activate
 pip install -r requirements.txt
-streamlit run File_Q\&A.py
+streamlit run Chatbot.py
 ```
 
 ## Getting API keys
