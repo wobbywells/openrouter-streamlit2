@@ -1,8 +1,7 @@
 import streamlit as st
-import webbrowser
 import requests
 import json
-from shared import constants
+from shared import constants, utils
 
 
 # Get available models from the API
@@ -58,12 +57,13 @@ def sidebar(default_model):
             "model", None
         )
         if not api_key:
-            if st.button("Connect OpenRouter"):
-                webbrowser.open(
+            st.button(
+                "Connect OpenRouter",
+                on_click=utils.open_page,
+                args=(
                     f"{constants.OPENROUTER_BASE}/auth?callback_url=http://localhost:8501",
-                    new=2,
-                    autoraise=False,
-                )
+                ),
+            )
         available_models = get_available_models()
         selected_model = handle_model_selection(
             available_models, selected_model, default_model
