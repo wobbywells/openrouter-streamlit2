@@ -61,7 +61,8 @@ def sidebar(default_model):
             if st.button("Connect OpenRouter"):
                 webbrowser.open(
                     f"{constants.OPENROUTER_BASE}/auth?callback_url=http://localhost:8501",
-                    new=1,
+                    new=2,
+                    autoraise=False,
                 )
         available_models = get_available_models()
         selected_model = handle_model_selection(
