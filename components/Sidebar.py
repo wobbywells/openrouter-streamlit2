@@ -56,13 +56,12 @@ def sidebar(default_model):
         selected_model = params.get("model", [None])[0] or st.session_state.get(
             "model", None
         )
+        url = utils.get_url()
         if not api_key:
             st.button(
                 "Connect OpenRouter",
                 on_click=utils.open_page,
-                args=(
-                    f"{constants.OPENROUTER_BASE}/auth?callback_url=http://localhost:8501",
-                ),
+                args=(f"{constants.OPENROUTER_BASE}/auth?callback_url={url}",),
             )
         available_models = get_available_models()
         selected_model = handle_model_selection(

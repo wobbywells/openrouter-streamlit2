@@ -1,10 +1,10 @@
 from streamlit.components.v1 import html
+from streamlit_javascript import st_javascript
+
+
+def get_url():
+    return st_javascript("await fetch('').then(r => window.parent.location.href)")
 
 
 def open_page(url):
-    open_script = f"""
-        <script type="text/javascript">
-            window.open('{url}', '_blank').focus();
-        </script>
-    """
-    html(open_script)
+    st_javascript(f"window.open('{url}', '_blank').focus()")
