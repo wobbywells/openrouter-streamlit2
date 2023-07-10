@@ -6,7 +6,7 @@ Starter examples for building LLM apps with Streamlit and [OpenRouter](https://o
 
 ## Overview of the App
 
-This app showcases a growing collection of OpenRouter minimum working examples, using multiple AI APIs.
+This app showcases a growing collection of OpenRouter minimum working examples, using a single API to access multiple language models, including [OpenAI GPT3/4, Anthropic Claude and Claude 100k, Google PaLM 2, and more](https://openrouter.ai/docs#models).
 
 Current examples include:
 
@@ -18,7 +18,7 @@ Current examples include:
 
 ## Demo App
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://llm-examples.streamlit.app/)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://openrouter.streamlit.app/)
 
 ## Running the code
 
@@ -31,4 +31,4 @@ streamlit run Chatbot.py
 
 ## Getting API keys
 
-Not needed! Your users will click the **Connect OpenRouter** button and auto-supply your app with a custom API key, using an [OAuth PKCE flow]("https://oauth.net/2/pkce/").
+Not needed! Your users will click the **Connect OpenRouter** button and auto-supply your app with a custom API key, using an [OAuth PKCE flow](https://openrouter.ai/docs#oauth).
