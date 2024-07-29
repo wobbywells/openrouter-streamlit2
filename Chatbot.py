@@ -68,7 +68,7 @@ if user_input and api_key:
                                 full_message["content"] += delta["content"]
                                 # Update the UI with the streaming content
                                 st.session_state.messages[-1] = full_message
-                                st.experimental_rerun()
+                                
                     except json.JSONDecodeError:
                         pass  # Handle JSON decode error if needed
 
