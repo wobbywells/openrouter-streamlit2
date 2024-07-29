@@ -1,9 +1,7 @@
-from openai import OpenAI
-client = OpenAI()
+import requests
 import streamlit as st
 from streamlit_chat import message
 from components.Sidebar import sidebar
-import json
 from shared import constants
 
 api_key, selected_model = sidebar(constants.OPENROUTER_DEFAULT_CHAT_MODEL)
@@ -32,17 +30,28 @@ if user_input and not api_key:
 if user_input and api_key:
     st.session_state.messages.append({"role": "user", "content": user_input})
     message(user_input, is_user=True)
-    client.api_key = api_key
-    client.api_base = constants.OPENROUTER_API_BASE
-    response = client.chat.completion.create(
-        model=selected_model,
-        messages=st.session_state.messages,
-        headers={"HTTP-Referer": constants.OPENROUTER_REFERRER},
+    
+    headers = {
+        "Authorization": f"Bearer {api_key}",
+        "Content-Type": "application/json",
+        "HTTP-Referer": constants.OPENROUTER_REFERRER
+    }
+    
+    payload = {
+        "model": selected_model,
+        "messages": st.session_state.messages
+    }
+    
+    response = requests.post(
+        f"{constants.OPENROUTER_API_BASE}/chat/completion",
+        headers=headers,
+        json=payload
     )
-    # response is sometimes type str
-    # TODO replace this hack with a real fix
-    if type(response) == str:
-        response = json.loads(response)
-    msg = response["choices"][0]["message"]
-    st.session_state.messages.append(msg)
-    message(msg["content"])
+    
+    if response.status_code == 200:
+        response_data = response.json()
+        msg = response_data["choices"][0]["message"]
+        st.session_state.messages.append(msg)
+        message(msg["content"])
+    else:
+        st.error("Error in API call")
