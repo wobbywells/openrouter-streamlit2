@@ -1,4 +1,5 @@
-import openai
+from openai import OpenAI
+client = OpenAI()
 import streamlit as st
 from streamlit_chat import message
 from components.Sidebar import sidebar
@@ -31,9 +32,9 @@ if user_input and not api_key:
 if user_input and api_key:
     st.session_state.messages.append({"role": "user", "content": user_input})
     message(user_input, is_user=True)
-    openai.api_key = api_key
-    openai.api_base = constants.OPENROUTER_API_BASE
-    response = openai.ChatCompletion.create(
+    client.api_key = api_key
+    client.api_base = constants.OPENROUTER_API_BASE
+    response = client.chat.completion.create(
         model=selected_model,
         messages=st.session_state.messages,
         headers={"HTTP-Referer": constants.OPENROUTER_REFERRER},
