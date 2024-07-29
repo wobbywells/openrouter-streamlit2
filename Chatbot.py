@@ -54,4 +54,5 @@ if user_input and api_key:
         st.session_state.messages.append(msg)
         message(msg["content"])
     else:
-        st.error("Failed to get a response from the server.")
+        st.error(f"Failed to get a response from the server. Status code: {response.status_code}")
+        st.error(f"Response: {response.text}")
