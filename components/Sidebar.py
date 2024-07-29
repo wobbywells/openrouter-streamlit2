@@ -74,7 +74,6 @@ def sidebar(default_model):
             st.text("Connected to OpenRouter")
             if st.button("Log out"):
                 del st.session_state["api_key"]
-                st.experimental_rerun()
         st.markdown(
             "[View the source code](https://github.com/alexanderatallah/openrouter-streamlit)"
         )
