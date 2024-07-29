@@ -45,7 +45,7 @@ if user_input and api_key:
     }
 
     response = requests.post(
-        f"{constants.OPENROUTER_API_BASE}/v1/chat/completions",
+        f"{constants.OPENROUTER_API_BASE}/chat/completions",
         headers=headers,
         json=payload,
         stream=True  # Request streaming
