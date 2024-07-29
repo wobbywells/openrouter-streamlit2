@@ -30,28 +30,28 @@ if user_input and not api_key:
 if user_input and api_key:
     st.session_state.messages.append({"role": "user", "content": user_input})
     message(user_input, is_user=True)
-    
+
     headers = {
         "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json",
-        "HTTP-Referer": constants.OPENROUTER_REFERRER
+        "HTTP-Referer": constants.OPENROUTER_REFERRER,
     }
-    
+
     payload = {
         "model": selected_model,
         "messages": st.session_state.messages
     }
-    
+
     response = requests.post(
-        f"{constants.OPENROUTER_API_BASE}/chat/completion",
+        f"{constants.OPENROUTER_API_BASE}/v1/chat/completion",
         headers=headers,
         json=payload
     )
-    
+
     if response.status_code == 200:
         response_data = response.json()
         msg = response_data["choices"][0]["message"]
         st.session_state.messages.append(msg)
         message(msg["content"])
     else:
-        st.error("Error in API call")
+        st.error("Failed to get a response from the server.")
