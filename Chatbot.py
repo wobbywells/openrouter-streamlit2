@@ -43,7 +43,7 @@ if user_input and api_key:
     }
 
     response = requests.post(
-        f"{constants.OPENROUTER_API_BASE}/v1/chat/completion",
+        f"{constants.OPENROUTER_API_BASE}",
         headers=headers,
         json=payload
     )
