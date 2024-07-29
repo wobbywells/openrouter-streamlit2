@@ -32,7 +32,7 @@ if user_input and api_key:
     message(user_input, is_user=True)
 
     headers = {
-        "Authorization": f"Bearer {api_key}/chat/completions",
+        "Authorization": f"Bearer {api_key}",
         "Content-Type": "application/json",
         "HTTP-Referer": constants.OPENROUTER_REFERRER,
     }
@@ -43,7 +43,7 @@ if user_input and api_key:
     }
 
     response = requests.post(
-        f"{constants.OPENROUTER_API_BASE}",
+        f"{constants.OPENROUTER_API_BASE}/chat/completions",
         headers=headers,
         json=payload
     )
