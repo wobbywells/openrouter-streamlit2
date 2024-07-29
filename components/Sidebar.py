@@ -40,7 +40,6 @@ def exchange_code_for_api_key(code: str):
         st.experimental_set_query_params()
         api_key = json.loads(response.text)["key"]
         st.session_state["api_key"] = api_key
-        st.experimental_rerun()
     except requests.exceptions.RequestException as e:
         st.error(f"Error exchanging code for API key: {e}")
 
