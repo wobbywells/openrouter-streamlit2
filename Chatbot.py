@@ -32,7 +32,7 @@ if user_input and api_key:
     message(user_input, is_user=True)
 
     headers = {
-        "Authorization": f"Bearer {api_key}",
+        "Authorization": f"Bearer {api_key}/chat/completions",
         "Content-Type": "application/json",
         "HTTP-Referer": constants.OPENROUTER_REFERRER,
     }
